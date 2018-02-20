@@ -15,7 +15,7 @@ const Guide = styled.div`
   max-width: 331px;
   min-width: 150px;
   outline: 0;
-  padding-right: 40px;
+  padding-right: ${ props => { return props.addRightPadding ? '40px' : '30px' }};
 
   transform: ${props => {
     const {

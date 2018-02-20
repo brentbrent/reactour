@@ -420,6 +420,7 @@ Please check the \`steps\` Tour prop Array at position: ${current + 1}.`)
             padding={maskSpace}
             tabIndex={-1}
             current={current}
+            addRightPadding={showClose} // Don't add extra right padding if we aren't showing the 'X'
             style={steps[current].style ? steps[current].style : {}}
             className={cn(CN.helper.base, className, {
               [CN.helper.isOpen]: isOpen,
