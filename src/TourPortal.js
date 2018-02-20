@@ -430,6 +430,7 @@ Please check the \`steps\` Tour prop Array at position: ${current + 1}.`)
                     goTo: this.gotoStep,
                     inDOM,
                     step: current + 1,
+                    close: onRequestClose,
                   })
                 : steps[current].content)}
             {showNumber && (
