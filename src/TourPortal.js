@@ -441,57 +441,60 @@ Please check the \`steps\` Tour prop Array at position: ${current + 1}.`)
                 )}
               </Badge>
             )}
-            <Controls>
-              {showButtons && (
-                <Arrow
-                  onClick={this.prevStep}
-                  disabled={current === 0}
-                  label={prevButton ? prevButton : null}
-                />
-              )}
 
-              {showNavigation && (
-                <Navigation>
-                  {steps.map((s, i) => (
-                    <Dot
-                      key={`${s.selector}_${i}`}
-                      onClick={() => this.gotoStep(i)}
-                      current={current}
-                      index={i}
-                      disabled={current === i}
-                      showNumber={showNavigationNumber}
-                    />
-                  ))}
-                </Navigation>
-              )}
+            {(showButtons || showNavigation) && (
+              <Controls>
+                {showButtons && (
+                  <Arrow
+                    onClick={this.prevStep}
+                    disabled={current === 0}
+                    label={prevButton ? prevButton : null}
+                  />
+                )}
 
-              {showButtons && (
-                <Arrow
-                  onClick={
-                    current === steps.length - 1 ? lastStepNextButton ? (
-                      onRequestClose
-                    ) : (
-                      () => {}
-                    ) : (
-                      this.nextStep
-                    )
-                  }
-                  disabled={!lastStepNextButton && current === steps.length - 1}
-                  inverted
-                  label={
-                    lastStepNextButton && current === steps.length - 1 ? (
-                      lastStepNextButton
-                    ) : nextButton ? (
-                      nextButton
-                    ) : null
-                  }
-                />
-              )}
-            </Controls>
+                {showNavigation && (
+                  <Navigation>
+                    {steps.map((s, i) => (
+                      <Dot
+                        key={`${s.selector}_${i}`}
+                        onClick={() => this.gotoStep(i)}
+                        current={current}
+                        index={i}
+                        disabled={current === i}
+                        showNumber={showNavigationNumber}
+                      />
+                    ))}
+                  </Navigation>
+                )}
 
-              { showClose && (
-                <Close onClick={onRequestClose} />
-              )}
+                {showButtons && (
+                  <Arrow
+                    onClick={
+                      current === steps.length - 1 ? lastStepNextButton ? (
+                        onRequestClose
+                      ) : (
+                        () => {}
+                      ) : (
+                        this.nextStep
+                      )
+                    }
+                    disabled={!lastStepNextButton && current === steps.length - 1}
+                    inverted
+                    label={
+                      lastStepNextButton && current === steps.length - 1 ? (
+                        lastStepNextButton
+                      ) : nextButton ? (
+                        nextButton
+                      ) : null
+                    }
+                  />
+                )}
+              </Controls>
+            )}
+
+            { showClose && (
+              <Close onClick={onRequestClose} />
+            )}
           </Guide>
         </div>
       )
