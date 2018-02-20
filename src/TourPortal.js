@@ -148,7 +148,7 @@ class TourPortal extends Component {
   }
 
   showStep = () => {
-    const { steps } = this.props
+    const { steps, noSelector } = this.props
     const { current } = this.state
     const step = steps[current]
     const node = document.querySelector(step.selector)
@@ -206,8 +206,14 @@ class TourPortal extends Component {
       this.calculateNode(node, step.position, cb)
     } else {
       this.setState(setNodeSate(null, this.helper, step.position), stepCallback)
-      console.warn(`Doesn't found a DOM node \`${step.selector}\`.
-Please check the \`steps\` Tour prop Array at position: ${current + 1}.`)
+
+      if (!noSelector) {
+        console.warn("Couldn't find a DOM node with selector '" + 
+          step.selector + 
+          "' Please check the 'steps' Tour prop Array at position: " + 
+          (current + 1)
+        )
+      }
     }
   }
 
