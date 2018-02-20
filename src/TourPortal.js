@@ -38,6 +38,7 @@ class TourPortal extends Component {
     scrollDuration: PropTypes.number,
     scrollOffset: PropTypes.number,
     showButtons: PropTypes.bool,
+    showClose: PropTypes.bool,
     showNavigation: PropTypes.bool,
     showNavigationNumber: PropTypes.bool,
     showNumber: PropTypes.bool,
@@ -70,6 +71,7 @@ class TourPortal extends Component {
     showNavigation: true,
     showNavigationNumber: true,
     showButtons: true,
+    showClose: true,
     showNumber: true,
     scrollDuration: 1,
     maskSpace: 10,
@@ -323,6 +325,7 @@ Please check the \`steps\` Tour prop Array at position: ${current + 1}.`)
       steps,
       maskClassName,
       showButtons,
+      showClose,
       showNavigation,
       showNavigationNumber,
       showNumber,
@@ -486,7 +489,9 @@ Please check the \`steps\` Tour prop Array at position: ${current + 1}.`)
               )}
             </Controls>
 
-            <Close onClick={onRequestClose} />
+              { showClose && (
+                <Close onClick={onRequestClose} />
+              )}
           </Guide>
         </div>
       )
