@@ -45,7 +45,7 @@ class TourPortal extends Component {
     startAt: PropTypes.number,
     steps: PropTypes.arrayOf(
       PropTypes.shape({
-        selector: PropTypes.string.isRequired,
+        selector: PropTypes.string,
         content: PropTypes.oneOfType([
           PropTypes.node,
           PropTypes.element,
